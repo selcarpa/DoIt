@@ -1,4 +1,8 @@
 {{- $this := .Scratch.Get "this" -}}
+{{- if not $this -}}
+    {{- $this = dict -}}
+{{- end -}}
 {{- $commentScript := $this.commentScript | default slice -}}
 {{- $commentScript = $commentScript | append (slice .Data) -}}
-{{- .Scratch.SetInMap "this" "commentScript" $commentScript -}}
+{{- $this = merge $this (dict "commentScript" $commentScript) -}}
+{{- .Scratch.Set "this" $this -}}

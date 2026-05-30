@@ -1,6 +1,13 @@
 {{- $destination := .Destination -}}
-{{- with dict "Path" $destination "Resources" .Page.Resources | partial "function/resource.html" -}}
-    {{- $destination = .RelPermalink -}}
+{{- $parsed := urls.Parse $destination -}}
+{{- $isPlainUrl := or $parsed.Host (not $parsed.Path) -}}
+{{- if not $isPlainUrl -}}
+    {{- $dest := strings.TrimPrefix "./" $parsed.Path -}}
+    {{- if ne $dest "/" -}}
+        {{- with dict "Path" $destination "Resources" .Page.Resources | partial "function/resource.html" -}}
+            {{- $destination = .RelPermalink -}}
+        {{- end -}}
+    {{- end -}}
 {{- end -}}
 {{- $options := dict "Destination" $destination "Title" .Title "Content" .Text -}}
 {{- partial "plugin/link.html" $options -}}
