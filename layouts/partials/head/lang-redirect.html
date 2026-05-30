@@ -1,0 +1,32 @@
+<script>
+(function() {
+  var LS_KEY = 'finite-lang';
+
+  function getPreferredLang() {
+    return (navigator.language || navigator.userLanguage || '').split('-')[0].toLowerCase();
+  }
+
+  function redirectOnFirstVisit() {
+    var langCode = getPreferredLang();
+    var supported = ['zh', 'en'];
+    if (supported.indexOf(langCode) === -1) return;
+    if (localStorage.getItem(LS_KEY)) return;
+    var isZhPage = window.location.pathname.indexOf('/zh-cn/') === 0;
+    if (langCode === 'zh' && !isZhPage) {
+      var target = '/zh-cn' + (window.location.pathname === '/' ? '' : window.location.pathname) +
+                   window.location.search + window.location.hash;
+      window.location.replace(target);
+    }
+  }
+
+  function saveChoice() {
+    localStorage.setItem(LS_KEY, '1');
+  }
+
+  document.addEventListener('change', function(e) {
+    if (e.target.matches('.language-select')) saveChoice();
+  });
+
+  redirectOnFirstVisit();
+})();
+</script>

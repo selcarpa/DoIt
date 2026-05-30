@@ -1,0 +1,41 @@
+html.dark .cc-window,
+html.dark [class*="cc-color-override"] {
+  background-color: #1c1c1e !important;
+}
+html.dark .cc-message {
+  color: #e5e5ea !important;
+}
+html.dark .cc-btn,
+html.dark .cc-dismiss {
+  background-color: #0a84ff !important;
+  color: #ffffff !important;
+  border-color: #0a84ff !important;
+}
+html.dark .cc-btn:hover,
+html.dark .cc-dismiss:hover {
+  background-color: #409cff !important;
+}
+html.dark .cc-link {
+  color: #0a84ff !important;
+}
+
+html.light .cc-window,
+html.light [class*="cc-color-override"] {
+  background-color: #ffffff !important;
+}
+html.light .cc-message {
+  color: #1c1c1e !important;
+}
+html.light .cc-btn,
+html.light .cc-dismiss {
+  background-color: #007aff !important;
+  color: #ffffff !important;
+  border-color: #007aff !important;
+}
+html.light .cc-btn:hover,
+html.light .cc-dismiss:hover {
+  background-color: #3395ff !important;
+}
+html.light .cc-link {
+  color: #007aff !important;
+}
