@@ -17,4 +17,4 @@ jobs:
       - uses: HEIGE-PCloud/update-dependencies@v0.3.2
         with:
           reviewers: |
-            HEIGE-PCloud
+            selcarpa
